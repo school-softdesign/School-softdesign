@@ -2,6 +2,8 @@ package com.softdesign.school.ui.activities;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int mCount;
     private Toolbar mToolbar;
     private Toast mToast;
+    private DrawerLayout mNavigationDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mCheckBox = (CheckBox) findViewById(R.id.checkBox);
         mEditText = (EditText) findViewById(R.id.text_field_2);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mNavigationDrawer = (DrawerLayout) findViewById(R.id.navigation_drawer);
+
         Button btnBlue = (Button) findViewById(R.id.button_blue);
         Button btnGreen = (Button) findViewById(R.id.button_green);
         Button btnRed = (Button) findViewById(R.id.button_red);
@@ -153,6 +158,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
+            mNavigationDrawer.openDrawer(GravityCompat.START);
             mToast = Toast.makeText(this, "Здесь будет меню", Toast.LENGTH_SHORT);
             mToast.show();
         }

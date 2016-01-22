@@ -6,4 +6,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="drawer.profile">Профиль</string>
+    <string name="drawer.contacts">Контакты</string>
+    <string name="drawer.tasks">Контакты</string>
+    <string name="drawer.team">Команда</string>
+    <string name="drawer.setting">Настройки</string>
 </resources>
