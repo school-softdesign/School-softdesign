@@ -2,7 +2,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.softdesign.school.ui.activities.MainActivity">
 
@@ -17,12 +17,9 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:elevation="@dimen/elevation_hight" />
-
     </android.support.design.widget.AppBarLayout>
 
-    <include
-        layout="@layout/main_content"/>
-
+    <include layout="@layout/main_content" />
 
 </android.support.design.widget.CoordinatorLayout>
 
