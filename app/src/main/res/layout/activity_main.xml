@@ -26,7 +26,14 @@
                 android:elevation="@dimen/elevation_hight" />
         </android.support.design.widget.AppBarLayout>
 
-        <include layout="@layout/main_content" />
+       <!-- <include layout="@layout/main_content" />-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/main_frame_container"
+            android:paddingTop="?android:actionBarSize"/>
+
+
 
     </android.support.design.widget.CoordinatorLayout>
 

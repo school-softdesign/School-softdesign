@@ -2,6 +2,8 @@ package com.softdesign.school.ui.activities;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -9,12 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.softdesign.school.R;
+import com.softdesign.school.ui.fragments.ContactsFragment;
+import com.softdesign.school.ui.fragments.ProfileFragment;
 import com.softdesign.school.utils.Lg;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Toolbar mToolbar;
     private Toast mToast;
     private DrawerLayout mNavigationDrawer;
+    private NavigationView mNavigationView;
+    private Fragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mEditText = (EditText) findViewById(R.id.text_field_2);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mNavigationDrawer = (DrawerLayout) findViewById(R.id.navigation_drawer);
-
-        Button btnBlue = (Button) findViewById(R.id.button_blue);
-        Button btnGreen = (Button) findViewById(R.id.button_green);
-        Button btnRed = (Button) findViewById(R.id.button_red);
-
-        mCheckBox.setOnClickListener(this);
-        btnBlue.setOnClickListener(this);
-        btnRed.setOnClickListener(this);
-        btnGreen.setOnClickListener(this);
+        mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
 
         setupToolbar();
+        setupDrawer();
         setTitle(this.getClass().getSimpleName());
 
         if (savedInstanceState != null) {
@@ -59,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mToast = Toast.makeText(this, "активити создано " + mCount + " раз", Toast.LENGTH_SHORT);
         } else {
             mToast = Toast.makeText(this, "активити создано впервые", Toast.LENGTH_SHORT);
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_container, new ProfileFragment()).commit();
         }
         mToast.show();
     }
@@ -165,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
+
     private void setupToolbar() {
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -172,5 +172,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_24dp);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    private void setupDrawer() {
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.drawer_profile:
+                        mFragment = new ProfileFragment();
+                        mNavigationView.getMenu().findItem(R.id.drawer_profile).setChecked(true);
+                        break;
+                    case R.id.drawer_contacts:
+                        mFragment = new ContactsFragment();
+                        mNavigationView.getMenu().findItem(R.id.drawer_contacts).setChecked(true);
+                        break;
+                }
+
+                if (mFragment!=null){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_container, mFragment).addToBackStack(null).commit();
+                }
+
+                mNavigationDrawer.closeDrawers();
+                return false;
+            }
+        });
     }
 }
