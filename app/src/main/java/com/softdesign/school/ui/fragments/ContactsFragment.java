@@ -14,6 +14,7 @@ public class ContactsFragment extends Fragment{
         View mainView = inflater.inflate(R.layout.fragment_contacts, container, false);
 
         getActivity().setTitle(getResources().getString(R.string.fragment_contacts_title));
+        setRetainInstance(true); //don`t remove fragment after rotate screen
         return mainView;
     }
 }

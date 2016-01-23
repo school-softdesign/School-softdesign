@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -158,8 +159,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             mNavigationDrawer.openDrawer(GravityCompat.START);
-            mToast = Toast.makeText(this, "Здесь будет меню", Toast.LENGTH_SHORT);
-            mToast.show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -197,5 +196,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Fragment findingFragment = (Fragment) getSupportFragmentManager().findFragmentById(R.id.main_frame_container);
+        if (findingFragment != null && findingFragment instanceof ProfileFragment) {
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+        super.onBackPressed();
     }
 }
