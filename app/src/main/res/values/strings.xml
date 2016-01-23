@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">School</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="drawer.profile">Профиль</string>
+    <string name="drawer.contacts">Контакты</string>
+    <string name="drawer.tasks">Задачи</string>
+    <string name="drawer.team">Команда</string>
+    <string name="drawer.setting">Настройки</string>
+    <string name="fragment.profile.description">Тут будет Личная информация</string>
+    <string name="fragment.profile.title">Мой профиль</string>
+    <string name="fragment.contacts.description">Тут будут контакты</string>
+    <string name="fragment.contacts.title">Мои контакты</string>
 </resources>
