@@ -17,4 +17,6 @@ public class ContactsFragment extends Fragment{
         setRetainInstance(true); //don`t remove fragment after rotate screen
         return mainView;
     }
+
+    //////12123124124
 }
