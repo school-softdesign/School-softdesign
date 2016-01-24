@@ -8,4 +8,5 @@
         android:text="@string/fragment.profile.description"
         android:gravity="center_vertical|center_horizontal" />
 
+
 </RelativeLayout>

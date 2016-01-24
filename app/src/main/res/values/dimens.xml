@@ -13,6 +13,7 @@
 
     <!-- Spaces -->
     <dimen name="spacing_normal">16dp</dimen>
+    <dimen name="toolbar_collapsing_image">256dp</dimen>
 
 
 </resources>
