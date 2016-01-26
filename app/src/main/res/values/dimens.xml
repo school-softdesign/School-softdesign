@@ -12,8 +12,24 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <!-- Spaces -->
+    <dimen name="spacing_small">8dp</dimen>
     <dimen name="spacing_normal">16dp</dimen>
+    <dimen name="spacing_large">72dp</dimen>
+
+
     <dimen name="toolbar_collapsing_image">256dp</dimen>
 
+    <!-- Height -->
+    <dimen name="list_item">72dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+
+    <!-- Touch -->
+    <dimen name="touch_size">44dp</dimen>
+
+    <!-- font sizes -->
+    <dimen name="font_larger">20sp</dimen>
+    <dimen name="font_large">16sp</dimen>
+    <dimen name="font_normal">14sp</dimen>
+    <dimen name="font_small">12sp</dimen>
 
 </resources>
