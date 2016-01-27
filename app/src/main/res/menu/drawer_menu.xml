@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<group android:checkableBehavior="single">
+    <item
+        android:id="@+id/drawer_profile"
+        android:checked="true"
+        android:title="@string/drawer.profile"/>
+    <item
+        android:id="@+id/drawer_contacts"
+        android:title="@string/drawer.contacts"/>
+    <item
+        android:id="@+id/drawer_team"
+        android:title="@string/drawer.team"/>
+    <item
+        android:id="@+id/drawer_tasks"
+        android:title="@string/drawer.tasks"/>
+    <item
+        android:id="@+id/drawer_setting"
+        android:title="@string/drawer.setting"/>
+</group>
+</menu>

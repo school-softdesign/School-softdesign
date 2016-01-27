@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CollapsingToolbarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/collapsing_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    app:contentScrim="@color/primary"
+    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_collapsing_image"
+        android:fitsSystemWindows="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/my_bg"
+        app:contentScrim="@color/primary"
+        tools:ignore="ContentDescription" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_collapseMode="pin"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        tools:ignore="NewApi" />
+
+</android.support.design.widget.CollapsingToolbarLayout>
