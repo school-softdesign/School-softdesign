@@ -1,49 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/list_item"
-    android:layout_marginBottom="@dimen/spacing_small"
-    android:layout_marginTop="@dimen/spacing_small">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        style="@style/list_item"
+        android:layout_marginTop="@dimen/spacing_small">
 
-    <android.support.v7.widget.AppCompatImageView
-        style="@style/icon"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/spacing_normal"
-        android:src="@drawable/ic_call_24dp" />
+        <android.support.v7.widget.AppCompatImageView
+            style="@style/icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:src="@drawable/ic_call_24dp" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="top"
-            android:fontFamily="@string/ff_regular"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/fragment.profile.phone.number"
-            android:textAlignment="viewStart"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_large"
-            tools:ignore="RtlCompat,UnusedAttribute" />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:fontFamily="@string/ff_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/fragment.profile.phone.number"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_large"
+                tools:ignore="RtlCompat,UnusedAttribute" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:fontFamily="@string/ff_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/fragment.profile.phone.label.mobile"
+                android:textAlignment="viewStart"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/font_normal"
+                tools:ignore="RtlCompat,UnusedAttribute" />
+
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        style="@style/list_item">
+
+        <android.support.v7.widget.AppCompatImageView
+            style="@style/icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:src="@drawable/ic_call_24dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:fontFamily="@string/ff_regular"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/fragment.profile.phone.label.mobile"
-            android:textAlignment="viewStart"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/font_normal"
-            tools:ignore="RtlCompat,UnusedAttribute" />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:orientation="vertical">
 
-    </LinearLayout>
-</RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:fontFamily="@string/ff_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/fragment.profile.phone.number"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_large"
+                tools:ignore="RtlCompat,UnusedAttribute" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:fontFamily="@string/ff_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/fragment.profile.phone.label.mobile"
+                android:textAlignment="viewStart"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/font_normal"
+                tools:ignore="RtlCompat,UnusedAttribute" />
+
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        style="@style/list_item">
+
+        <android.support.v7.widget.AppCompatImageView
+            style="@style/icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:src="@drawable/ic_call_24dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:fontFamily="@string/ff_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/fragment.profile.phone.number"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_large"
+                tools:ignore="RtlCompat,UnusedAttribute" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:fontFamily="@string/ff_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/fragment.profile.phone.label.mobile"
+                android:textAlignment="viewStart"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/font_normal"
+                tools:ignore="RtlCompat,UnusedAttribute" />
+
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        style="@style/list_item">
+
+        <android.support.v7.widget.AppCompatImageView
+            style="@style/icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:src="@drawable/ic_call_24dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:fontFamily="@string/ff_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/fragment.profile.phone.number"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_large"
+                tools:ignore="RtlCompat,UnusedAttribute" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:fontFamily="@string/ff_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/fragment.profile.phone.label.mobile"
+                android:textAlignment="viewStart"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/font_normal"
+                tools:ignore="RtlCompat,UnusedAttribute" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
+
+
 

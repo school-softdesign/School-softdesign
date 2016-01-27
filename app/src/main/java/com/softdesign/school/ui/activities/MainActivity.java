@@ -3,6 +3,7 @@ package com.softdesign.school.ui.activities;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,7 +19,6 @@ import android.widget.Toast;
 import com.softdesign.school.R;
 import com.softdesign.school.ui.fragments.ContactsFragment;
 import com.softdesign.school.ui.fragments.ProfileFragment;
-import com.softdesign.school.utils.Lg;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public AppBarLayout mAppBar;
     private CollapsingToolbarLayout mCollapsingToolbar;
     AppBarLayout.LayoutParams params = null;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +42,12 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mAppBar = (AppBarLayout) findViewById(R.id.appbar_layout);
         mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-
+        fab = (FloatingActionButton) findViewById(R.id.fab);
 
         setupToolbar();
         setupDrawer();
         mAppBar.setExpanded(false, false);
 
-
-        Lg.e("activity", String.valueOf(getStatusBarHeight()));
         if (savedInstanceState != null) {
             //// TODO: Сохраненные значения из bundle обрабатывать здесь
         } else {
@@ -57,49 +56,37 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_container, new ProfileFragment()).commit();
             mToast.show();
         }
-
-
     }
 
 
     @Override
     protected void onStart() {
         super.onStart();
-        //Lg.e(this.getClass().getSimpleName(), "onStart()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Lg.e("Bottom", String.valueOf(mCollapsingToolbar.getLeft()));
-        Lg.e("Bottom", String.valueOf(mCollapsingToolbar.getRight()));
-        Lg.e("Bottom", String.valueOf(mCollapsingToolbar.getBottom()));
-        Lg.e("He", String.valueOf(mCollapsingToolbar.getMeasuredHeight()));
-        //Lg.e("TAG", "onResume()");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        //Lg.e(this.getClass().getSimpleName(), "onPause()");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        //Lg.e(this.getClass().getSimpleName(), "onStop()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //Lg.e(this.getClass().getSimpleName(), "onDestroy()");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        //Lg.e(this.getClass().getSimpleName(), "onRestart()");
     }
 
     @Override
@@ -139,20 +126,17 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.drawer_profile:
                         mFragment = new ProfileFragment();
                         mNavigationView.getMenu().findItem(R.id.drawer_profile).setChecked(true);
-                        //lockAppBar(false);
                         break;
 
                     case R.id.drawer_contacts:
                         mFragment = new ContactsFragment();
                         mNavigationView.getMenu().findItem(R.id.drawer_contacts).setChecked(true);
-                        //lockAppBar(true);
                         break;
                 }
 
                 if (mFragment != null) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_container, mFragment).addToBackStack(null).commit();
                 }
-
                 mNavigationDrawer.closeDrawers();
                 return false;
             }
