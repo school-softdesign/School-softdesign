@@ -1,5 +1,7 @@
 package com.softdesign.school.ui.activities;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -13,12 +15,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.softdesign.school.R;
 import com.softdesign.school.ui.fragments.ContactsFragment;
 import com.softdesign.school.ui.fragments.ProfileFragment;
+import com.softdesign.school.utils.Lg;
+import com.softdesign.school.utils.BitmapUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,8 +37,18 @@ public class MainActivity extends AppCompatActivity {
     private Fragment mFragment;
     public AppBarLayout mAppBar;
     private CollapsingToolbarLayout mCollapsingToolbar;
+
+    private View mHeaderLayout;
+
     AppBarLayout.LayoutParams params = null;
     FloatingActionButton fab;
+
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        View view = inflater.inflate(R.layout.drawer_header, container, false);
+//
+//
+//        return view;
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mNavigationDrawer = (DrawerLayout) findViewById(R.id.navigation_drawer);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
+        mHeaderLayout = mNavigationView.inflateHeaderView(R.layout.drawer_header);
         mAppBar = (AppBarLayout) findViewById(R.id.appbar_layout);
         mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -56,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_container, new ProfileFragment()).commit();
             mToast.show();
         }
+
+        ImageView image = (ImageView) mHeaderLayout.findViewById(R.id.imageView);
+        Bitmap imageBitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        image.setImageBitmap(BitmapUtils.getCircleMaskedBitmapUsingShader(imageBitmap, 54));
     }
 
 
@@ -67,6 +90,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Lg.e("Bottom", String.valueOf(mCollapsingToolbar.getLeft()));
+        Lg.e("Bottom", String.valueOf(mCollapsingToolbar.getRight()));
+        Lg.e("Bottom", String.valueOf(mCollapsingToolbar.getBottom()));
+        Lg.e("He", String.valueOf(mCollapsingToolbar.getMeasuredHeight()));
+        //Lg.e("TAG", "onResume()");
     }
 
     @Override
