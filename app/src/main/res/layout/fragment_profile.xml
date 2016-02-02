@@ -1,185 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="28dp">
+
     <RelativeLayout
         style="@style/list_item"
         android:layout_marginTop="@dimen/spacing_small">
 
-        <android.support.v7.widget.AppCompatImageView
-            style="@style/icon"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
+        <ImageView
+            style="@style/icon.left"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_centerVertical="true"
             android:src="@drawable/ic_call_24dp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:fontFamily="@string/ff_regular"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="@string/fragment.profile.phone.number"
-                android:textAlignment="viewStart"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_large"
-                tools:ignore="RtlCompat,UnusedAttribute" />
+                android:layout_marginLeft="@dimen/spacing_larger"
+                android:layout_marginStart="@dimen/spacing_larger"
+                android:layout_marginBottom="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:paddingRight="@dimen/spacing_larger"
+                android:paddingEnd="@dimen/spacing_larger"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:fontFamily="@string/ff_regular"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="@string/fragment.profile.phone.label.mobile"
-                android:textAlignment="viewStart"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/font_normal"
-                tools:ignore="RtlCompat,UnusedAttribute" />
+                <TextView
+                    android:id="@+id/txt_phone_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:fontFamily="@string/ff_regular"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/fragment.profile.phone.value"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_large"
+                    tools:ignore="RtlCompat,UnusedAttribute" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/txt_phone_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:fontFamily="@string/ff_regular"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/fragment.profile.phone.label.mobile"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/font_normal"
+                    tools:ignore="RtlCompat,UnusedAttribute" />
+
+            </LinearLayout>
+
+            <ImageView
+                style="@style/icon.right"
+                android:src="@drawable/ic_sms_24dp" />
+
     </RelativeLayout>
-    <RelativeLayout
-        style="@style/list_item">
 
-        <android.support.v7.widget.AppCompatImageView
-            style="@style/icon"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:src="@drawable/ic_call_24dp" />
+    <!--<View style="@style/divider.inset"/>-->
+
+    <RelativeLayout
+        style="@style/list_item"
+        android:layout_marginTop="@dimen/spacing_small">
+
+        <ImageView
+            style="@style/icon.left"
+            android:src="@drawable/ic_email_24dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_larger"
+            android:layout_marginStart="@dimen/spacing_larger"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:paddingRight="@dimen/spacing_larger"
+            android:paddingEnd="@dimen/spacing_larger"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/txt_email_value"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:fontFamily="@string/ff_regular"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="@string/fragment.profile.phone.number"
+                android:text="@string/fragment.profile.email.value"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_large"
                 tools:ignore="RtlCompat,UnusedAttribute" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/txt_email_label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:fontFamily="@string/ff_regular"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="@string/fragment.profile.phone.label.mobile"
+                android:text="@string/fragment.profile.email.label"
                 android:textAlignment="viewStart"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute" />
 
         </LinearLayout>
+
+        <ImageView
+            style="@style/icon.right"
+            android:src="@drawable/ic_send_24dp" />
+
     </RelativeLayout>
-    <RelativeLayout
-        style="@style/list_item">
 
-        <android.support.v7.widget.AppCompatImageView
-            style="@style/icon"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:src="@drawable/ic_call_24dp" />
+    <!--<View style="@style/divider.inset"/>-->
+
+    <RelativeLayout
+        style="@style/list_item"
+        android:layout_marginTop="@dimen/spacing_small">
+
+        <ImageView
+            style="@style/icon.left"
+            android:src="@drawable/ic_vk_24dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_larger"
+            android:layout_marginStart="@dimen/spacing_larger"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:paddingRight="@dimen/spacing_larger"
+            android:paddingEnd="@dimen/spacing_larger"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/txt_vk_value"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:fontFamily="@string/ff_regular"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="@string/fragment.profile.phone.number"
+                android:text="@string/fragment.profile.vk.value"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_large"
                 tools:ignore="RtlCompat,UnusedAttribute" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/txt_vk_label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:fontFamily="@string/ff_regular"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="@string/fragment.profile.phone.label.mobile"
+                android:text="@string/fragment.profile.vk.label"
                 android:textAlignment="viewStart"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute" />
 
         </LinearLayout>
+
+        <ImageView
+            style="@style/icon.right"
+            android:src="@drawable/ic_search_24dp" />
+
     </RelativeLayout>
-    <RelativeLayout
-        style="@style/list_item">
 
-        <android.support.v7.widget.AppCompatImageView
-            style="@style/icon"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:src="@drawable/ic_call_24dp" />
+   <!-- <View style="@style/divider.inset"/>-->
+
+    <RelativeLayout
+        style="@style/list_item"
+        android:layout_marginTop="@dimen/spacing_small">
+
+        <ImageView
+            style="@style/icon.left"
+            android:src="@drawable/ic_git_24dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_larger"
+            android:layout_marginStart="@dimen/spacing_larger"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:paddingRight="@dimen/spacing_larger"
+            android:paddingEnd="@dimen/spacing_larger"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/txt_git_value"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:fontFamily="@string/ff_regular"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="@string/fragment.profile.phone.number"
+                android:text="@string/fragment.profile.git.value"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_large"
                 tools:ignore="RtlCompat,UnusedAttribute" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/txt_git_label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:fontFamily="@string/ff_regular"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="@string/fragment.profile.phone.label.mobile"
+                android:text="@string/fragment.profile.git.label"
                 android:textAlignment="viewStart"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute" />
 
         </LinearLayout>
+
+        <ImageView
+            style="@style/icon.right"
+            android:src="@drawable/ic_search_24dp" />
+
+    </RelativeLayout>
+
+    <View style="@style/divider.inset"/>
+
+    <RelativeLayout
+        style="@style/list_item"
+        android:layout_marginTop="@dimen/spacing_small">
+
+        <ImageView
+            style="@style/icon.left"
+            android:src="@drawable/ic_info_outline_24dp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_larger"
+            android:layout_marginStart="@dimen/spacing_larger"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:paddingRight="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_normal"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout2">
+
+            <TextView
+                android:id="@+id/txt_bio_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:fontFamily="@string/ff_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/fragment.profile.bio.value"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_large"
+                tools:ignore="RtlCompat,UnusedAttribute" />
+
+            <TextView
+                android:id="@+id/txt_bio_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:fontFamily="@string/ff_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/fragment.profile.bio.label"
+                android:textAlignment="viewStart"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/font_normal"
+                tools:ignore="RtlCompat,UnusedAttribute" />
+
+        </LinearLayout>
+
     </RelativeLayout>
 </LinearLayout>
 
