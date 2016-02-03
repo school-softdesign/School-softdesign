@@ -5,7 +5,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -24,6 +23,7 @@ import com.softdesign.school.R;
 import com.softdesign.school.ui.fragments.ContactsFragment;
 import com.softdesign.school.ui.fragments.ProfileFragment;
 import com.softdesign.school.utils.BitmapUtils;
+import com.softdesign.school.utils.ConstantManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     public AppBarLayout mAppBar;
     public CollapsingToolbarLayout mCollapsingToolbar;
     private View mHeaderLayout;
+    private String mFragmentTag = null;
+    private FragmentManager mFragmentManager;
 
     public AppBarLayout.LayoutParams params = null;
 
@@ -43,64 +45,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // инициализируем View компоненты
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mNavigationDrawer = (DrawerLayout) findViewById(R.id.navigation_drawer);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mHeaderLayout = mNavigationView.inflateHeaderView(R.layout.drawer_header);
         mAppBar = (AppBarLayout) findViewById(R.id.appbar_layout);
         mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        // инициализируем встроенные методы Activity
+        mFragmentManager = getSupportFragmentManager();
+
+        // инициализируем UI
         setupToolbar();
         setupDrawer();
 
+        // проверка на первый запуск
         if (savedInstanceState != null) {
             //// TODO: Сохраненные значения из bundle обрабатывать здесь
         } else {
             mToast = Toast.makeText(this, "активити создано впервые", Toast.LENGTH_SHORT);
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_container, new ProfileFragment()).commit();
+            mFragment = fragmentInstanceByTag(ConstantManager.FRAGMENT_TAG_PROFILE);
+            mFragmentManager.beginTransaction().replace(R.id.main_frame_container, mFragment, mFragmentTag).commit();
             mToast.show();
         }
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -114,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Fragment findingFragment = (Fragment) getSupportFragmentManager().findFragmentById(R.id.main_frame_container);
+
         if (findingFragment != null && findingFragment instanceof ProfileFragment) {
             getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         }
@@ -142,21 +111,23 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
+
                 switch (item.getItemId()) {
                     case R.id.drawer_profile:
-                        mFragment = new ProfileFragment();
+                        mFragmentTag = ConstantManager.FRAGMENT_TAG_PROFILE;
                         mNavigationView.getMenu().findItem(R.id.drawer_profile).setChecked(true);
                         break;
 
                     case R.id.drawer_contacts:
-                        mFragment = new ContactsFragment();
+                        mFragmentTag = ConstantManager.FRAGMENT_TAG_CONTACTS;
                         mNavigationView.getMenu().findItem(R.id.drawer_contacts).setChecked(true);
                         break;
                 }
 
-                if (mFragment != null) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_container, mFragment).addToBackStack(null).commit();
-                }
+                mFragment = fragmentInstanceByTag(mFragmentTag);
+                mFragmentManager.beginTransaction().replace(R.id.main_frame_container, mFragment, mFragmentTag)
+                        .addToBackStack(mFragmentTag).commit();
+
                 mNavigationDrawer.closeDrawers();
                 return false;
             }
@@ -165,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Сворачивает ToolBar
+     *
      * @param collapse true - свернуть / false -  развернуть
      */
     public void collapseAppBar(boolean collapse) {
@@ -223,5 +195,32 @@ public class MainActivity extends AppCompatActivity {
         avatar.setImageBitmap(BitmapUtils.getCircleMaskedBitmapUsingShader(imageBitmap, 54));
     }
 
+    /**
+     * Создаем фрагмент по его тегу
+     *
+     * @param mFragmentTag - тег фрагмента
+     * @return фрагмент
+     */
+    private Fragment fragmentInstanceByTag(String mFragmentTag) {
 
+        Fragment newFragment;
+        switch (mFragmentTag) {
+            case ConstantManager.FRAGMENT_TAG_PROFILE:
+                newFragment = mFragmentManager.findFragmentByTag(mFragmentTag);
+                if (newFragment == null) {
+                    newFragment = new ProfileFragment();
+                }
+                break;
+            case ConstantManager.FRAGMENT_TAG_CONTACTS:
+                newFragment = mFragmentManager.findFragmentByTag(mFragmentTag);
+                if (newFragment == null) {
+                    newFragment = new ContactsFragment();
+                }
+                break;
+            default:
+                newFragment = mFragmentManager.findFragmentById(R.id.main_frame_container);
+                break;
+        }
+        return newFragment;
+    }
 }

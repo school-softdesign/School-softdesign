@@ -80,4 +80,8 @@ public class User {
     public void setmGitLink(String mGitLink) {
         this.mGitLink = mGitLink;
     }
+
+    public void saveUserData(String phone, String email, String vk, String git, String bio){
+
+    }
 }

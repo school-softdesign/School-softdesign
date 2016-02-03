@@ -12,55 +12,71 @@
 
         <ImageView
             style="@style/icon.left"
+            android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginStart="@dimen/spacing_normal"
-            android:layout_centerVertical="true"
             android:src="@drawable/ic_call_24dp" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_larger"
+            android:layout_marginStart="@dimen/spacing_larger"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/spacing_larger"
+            android:paddingRight="@dimen/spacing_larger"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/txt_phone_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/spacing_larger"
-                android:layout_marginStart="@dimen/spacing_larger"
-                android:layout_marginBottom="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_normal"
-                android:paddingRight="@dimen/spacing_larger"
-                android:paddingEnd="@dimen/spacing_larger"
-                android:orientation="vertical">
+                android:layout_gravity="top"
+                android:fontFamily="@string/ff_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/fragment.profile.phone.value"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_large"
+                tools:ignore="RtlCompat,UnusedAttribute"
+                />
 
-                <TextView
-                    android:id="@+id/txt_phone_value"
-                    android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txt_phone_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:fontFamily="@string/ff_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/fragment.profile.phone.label.mobile"
+                android:textAlignment="viewStart"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/font_normal"
+                tools:ignore="RtlCompat,UnusedAttribute"
+                />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/et_phone_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/et_phone_value"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:fontFamily="@string/ff_regular"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="@string/fragment.profile.phone.value"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/font_large"
-                    tools:ignore="RtlCompat,UnusedAttribute" />
+                    android:hint="@string/fragment.profile.phone.label.mobile" />
 
-                <TextView
-                    android:id="@+id/txt_phone_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:fontFamily="@string/ff_regular"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="@string/fragment.profile.phone.label.mobile"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/font_normal"
-                    tools:ignore="RtlCompat,UnusedAttribute" />
+            </android.support.design.widget.TextInputLayout>
 
-            </LinearLayout>
+        </LinearLayout>
 
-            <ImageView
-                style="@style/icon.right"
-                android:src="@drawable/ic_sms_24dp" />
+        <ImageView
+            style="@style/icon.right"
+            android:src="@drawable/ic_sms_24dp" />
 
     </RelativeLayout>
 
@@ -75,15 +91,14 @@
             android:src="@drawable/ic_email_24dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/spacing_larger"
             android:layout_marginStart="@dimen/spacing_larger"
-            android:layout_marginBottom="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_normal"
-            android:paddingRight="@dimen/spacing_larger"
+            android:orientation="vertical"
             android:paddingEnd="@dimen/spacing_larger"
-            android:orientation="vertical">
+            android:paddingRight="@dimen/spacing_larger"
+            android:layout_centerVertical="true">
 
             <TextView
                 android:id="@+id/txt_email_value"
@@ -111,6 +126,19 @@
                 android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute" />
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/et_email_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_email_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/fragment.profile.email.label" />
+
+            </android.support.design.widget.TextInputLayout>
+
         </LinearLayout>
 
         <ImageView
@@ -130,15 +158,14 @@
             android:src="@drawable/ic_vk_24dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/spacing_larger"
             android:layout_marginStart="@dimen/spacing_larger"
-            android:layout_marginBottom="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_normal"
-            android:paddingRight="@dimen/spacing_larger"
+            android:orientation="vertical"
             android:paddingEnd="@dimen/spacing_larger"
-            android:orientation="vertical">
+            android:paddingRight="@dimen/spacing_larger"
+            android:layout_centerVertical="true">
 
             <TextView
                 android:id="@+id/txt_vk_value"
@@ -166,6 +193,19 @@
                 android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute" />
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/et_vk_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_vk_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/fragment.profile.vk.label" />
+
+            </android.support.design.widget.TextInputLayout>
+
         </LinearLayout>
 
         <ImageView
@@ -174,7 +214,7 @@
 
     </RelativeLayout>
 
-   <!-- <View style="@style/divider.inset"/>-->
+    <!-- <View style="@style/divider.inset"/>-->
 
     <RelativeLayout
         style="@style/list_item"
@@ -185,15 +225,14 @@
             android:src="@drawable/ic_git_24dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/spacing_larger"
             android:layout_marginStart="@dimen/spacing_larger"
-            android:layout_marginBottom="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_normal"
-            android:paddingRight="@dimen/spacing_larger"
+            android:orientation="vertical"
             android:paddingEnd="@dimen/spacing_larger"
-            android:orientation="vertical">
+            android:paddingRight="@dimen/spacing_larger"
+            android:layout_centerVertical="true">
 
             <TextView
                 android:id="@+id/txt_git_value"
@@ -221,6 +260,19 @@
                 android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute" />
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/et_git_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_git_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/fragment.profile.git.label" />
+
+            </android.support.design.widget.TextInputLayout>
+
         </LinearLayout>
 
         <ImageView
@@ -229,7 +281,7 @@
 
     </RelativeLayout>
 
-    <View style="@style/divider.inset"/>
+    <View style="@style/divider.inset" />
 
     <RelativeLayout
         style="@style/list_item"
@@ -240,16 +292,14 @@
             android:src="@drawable/ic_info_outline_24dp" />
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/spacing_larger"
             android:layout_marginStart="@dimen/spacing_larger"
-            android:layout_marginBottom="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_normal"
-            android:paddingRight="@dimen/spacing_normal"
-            android:paddingEnd="@dimen/spacing_normal"
             android:orientation="vertical"
-            android:id="@+id/linearLayout2">
+            android:paddingEnd="@dimen/spacing_normal"
+            android:paddingRight="@dimen/spacing_normal"
+            android:layout_centerVertical="true">
 
             <TextView
                 android:id="@+id/txt_bio_value"
@@ -276,6 +326,19 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/et_bio_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_bio_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/fragment.profile.bio.label" />
+
+            </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
 
