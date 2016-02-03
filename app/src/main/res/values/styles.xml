@@ -60,4 +60,21 @@
         <item name="android:layout_marginLeft">@dimen/spacing_larger</item>
     </style>
 
+    <style name="font">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="font.medium" parent="font">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@string/ff_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+    <style name="font.regular" parent="font">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@string/ff_regular</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
 </resources>

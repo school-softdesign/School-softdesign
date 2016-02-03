@@ -40,7 +40,7 @@ public class ContactsFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (mainView == null) {
-            // Если представления нет, создаем его*/
+            // Если представления нет, создаем его*//*
             mainView = inflater.inflate(R.layout.fragment_contacts, container, false);}
         getActivity().setTitle(getResources().getString(R.string.fragment_contacts_title));
 
@@ -50,8 +50,7 @@ public class ContactsFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         listContacts.setLayoutManager(mLayoutManager);
 
-
-        //listContacts.setAdapter(mAdapter);
+        listContacts.setAdapter(mAdapter);
         ((MainActivity) getActivity()).collapseAppBar(true);
         return mainView;
     }
@@ -60,7 +59,7 @@ public class ContactsFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        listContacts.setAdapter(mAdapter);
+        //listContacts.setAdapter(mAdapter);
         FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
         params.setAnchorId(R.id.coordinator_container);

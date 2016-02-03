@@ -55,11 +55,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // инициализируем View компоненты
-        /*mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mNavigationDrawer = (DrawerLayout) findViewById(R.id.navigation_drawer);
-        mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
-        mAppBar = (AppBarLayout) findViewById(R.id.appbar_layout);
-        mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);*/
         ButterKnife.bind(this);
         mHeaderLayout = mNavigationView.inflateHeaderView(R.layout.drawer_header);
 
