@@ -25,20 +25,29 @@ import com.softdesign.school.ui.fragments.ProfileFragment;
 import com.softdesign.school.utils.BitmapUtils;
 import com.softdesign.school.utils.ConstantManager;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
-    private Toolbar mToolbar;
     private Toast mToast;
+    /*private Toolbar mToolbar;
     private DrawerLayout mNavigationDrawer;
     private NavigationView mNavigationView;
-    private Fragment mFragment;
     public AppBarLayout mAppBar;
-    public CollapsingToolbarLayout mCollapsingToolbar;
+    public CollapsingToolbarLayout mCollapsingToolbar;*/
+    private Fragment mFragment;
     private View mHeaderLayout;
     private String mFragmentTag = null;
     private FragmentManager mFragmentManager;
 
     public AppBarLayout.LayoutParams params = null;
+
+    @Bind(R.id.toolbar) Toolbar mToolbar;
+    @Bind(R.id.navigation_drawer) DrawerLayout mNavigationDrawer;
+    @Bind(R.id.navigation_view) NavigationView mNavigationView;
+    @Bind(R.id.appbar_layout) AppBarLayout mAppBar;
+    @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +55,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // инициализируем View компоненты
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        /*mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mNavigationDrawer = (DrawerLayout) findViewById(R.id.navigation_drawer);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
-        mHeaderLayout = mNavigationView.inflateHeaderView(R.layout.drawer_header);
         mAppBar = (AppBarLayout) findViewById(R.id.appbar_layout);
-        mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);*/
+        ButterKnife.bind(this);
+        mHeaderLayout = mNavigationView.inflateHeaderView(R.layout.drawer_header);
 
         // инициализируем встроенные методы Activity
         mFragmentManager = getSupportFragmentManager();

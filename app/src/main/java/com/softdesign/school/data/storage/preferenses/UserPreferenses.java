@@ -32,11 +32,11 @@ public class UserPreferenses {
     public List<String> loadUserProfileData(){
         mPreferenses=SchoolApplication.getPreferences();
         List<String> userFields = new ArrayList<>();
-        userFields.add(mPreferenses.getString(USER_PROFILE_PHONE, ""));
-        userFields.add(mPreferenses.getString(USER_PROFILE_EMAIL, ""));
-        userFields.add(mPreferenses.getString(USER_PROFILE_VK, ""));
-        userFields.add(mPreferenses.getString(USER_PROFILE_GIT, ""));
-        userFields.add(mPreferenses.getString(USER_PROFILE_BIO,""));
+        userFields.add(mPreferenses.getString(USER_PROFILE_PHONE, "pref tel"));
+        userFields.add(mPreferenses.getString(USER_PROFILE_EMAIL, "pref mail"));
+        userFields.add(mPreferenses.getString(USER_PROFILE_VK, "pref vk"));
+        userFields.add(mPreferenses.getString(USER_PROFILE_GIT, "pref git"));
+        userFields.add(mPreferenses.getString(USER_PROFILE_BIO,"pref bio"));
         return userFields;
     }
 

@@ -29,7 +29,7 @@ public class ProfileFragment extends Fragment {
     private static final String FUNCTIONALITY_PROFILE_EDIT = "profile_edit";
     private static String sCurrentFunctionality = FUNCTIONALITY_PROFILE_VIEW;
     UserPreferenses userFields;
-    List<String> data;
+    List<String> mUserProfileData;
     View mainView = null;
 
     @Bind({R.id.txt_phone_value, R.id.txt_email_value, R.id.txt_vk_value, R.id.txt_git_value, R.id.txt_bio_value})
@@ -41,15 +41,16 @@ public class ProfileFragment extends Fragment {
     @Bind({R.id.et_phone_value, R.id.et_email_value, R.id.et_vk_value, R.id.et_git_value, R.id.et_bio_value})
     List<EditText> etViewsValue;
 
+
     public ProfileFragment() {
-        this.setRetainInstance(true);
+        this.setRetainInstance(true); // непересоздавать фрагмент при повороте экрана
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         userFields = new UserPreferenses();
-        data = userFields.loadUserProfileData();
+        mUserProfileData = userFields.loadUserProfileData(); // получаем данные из локальной модели.
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,31 +59,32 @@ public class ProfileFragment extends Fragment {
             // Если представления нет, создаем его*/
             mainView = inflater.inflate(R.layout.fragment_profile, container, false);
             ButterKnife.bind(this, mainView);
-            setupFuncionality(sCurrentFunctionality);
         }
 
 
         getActivity().setTitle(getResources().getString(R.string.fragment_profile_title));
         ((MainActivity) getActivity()).collapseAppBar(false);
 
-        setFieldsData(txtViewsValues, data);
-        setFieldsData(etViewsValue, data);
+        setFieldsData(txtViewsValues, mUserProfileData); //заполняем View элементы данными
+        setFieldsData(etViewsValue, mUserProfileData);
+        setupFuncionality(sCurrentFunctionality); //выставляем текущую функциональность
         return mainView;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
-        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
-        params.setAnchorId(R.id.appbar_layout);
-        params.anchorGravity = Gravity.BOTTOM | Gravity.RIGHT;
+
+        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab); //инициализируем fab из активити
+        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) fab.getLayoutParams(); // получаем параметры Layout fab приведенные к родителю
+        params.setAnchorId(R.id.appbar_layout); //выставляем привязку якоря к appBarLayout
+        params.anchorGravity = Gravity.BOTTOM | Gravity.RIGHT; //выставляем anchorGravity
         fab.setLayoutParams(params);
-        fab.setImageResource(R.drawable.ic_call_white_24dp);
+        fab.setImageResource(R.drawable.ic_mode_edit_24dp); // меняем иконку fab
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if (sCurrentFunctionality.equals(FUNCTIONALITY_PROFILE_VIEW)) {
+            public void onClick(View v) {                     //создаем и вешаем новый обработчик на fab
+                if (sCurrentFunctionality.equals(FUNCTIONALITY_PROFILE_VIEW)) {  //выбираем действие для fab в зависимости от текущего режима
                     setupFuncionality(FUNCTIONALITY_PROFILE_EDIT);
                 } else {
                     setupFuncionality(FUNCTIONALITY_PROFILE_VIEW);
@@ -91,22 +93,30 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    /**
+     * Устанавливает текущую функциональность фрагмента
+     * @param Funcionality - статическое поле класса с тегом функциональности
+     */
     private void setupFuncionality(String Funcionality) {
+
+        sCurrentFunctionality = Funcionality; // выставляем текущую функциональность в зависимости от переданного аргумента
+
         switch (Funcionality) {
-            case FUNCTIONALITY_PROFILE_VIEW:
-                sCurrentFunctionality = FUNCTIONALITY_PROFILE_VIEW;
-                List<String> data = getFieldsData(etViewsValue);
-                userFields.saveUserProfileData(data);
-                setFieldsData(txtViewsValues,data);
-                ButterKnife.apply(etViewsWrappers, INVISIBLE);
-                ButterKnife.apply(txtViewsValues, VISIBLE);
+            case FUNCTIONALITY_PROFILE_VIEW: //режим просмотра
+                List<String> ScreenData = getFieldsData(etViewsValue);
+                if (!mUserProfileData.equals(ScreenData)) {  // если данные в EditView не совпадают с данными из модели UserPreferenses
+                    userFields.saveUserProfileData(ScreenData); //то сохранить новые данные в модели
+                    mUserProfileData = ScreenData; // заменить текущие данные в фрагменте
+                    setFieldsData(txtViewsValues, mUserProfileData); // заполнить поля TextView
+                };
+                ButterKnife.apply(etViewsWrappers, INVISIBLE); //скрыть EditText
+                ButterKnife.apply(txtViewsValues, VISIBLE); // показать TextView
                 ButterKnife.apply(txtViewsLabels, VISIBLE);
-                setFieldsData(txtViewsValues, userFields.loadUserProfileData());
+
                 break;
-            case FUNCTIONALITY_PROFILE_EDIT:
-                sCurrentFunctionality = FUNCTIONALITY_PROFILE_EDIT;
-                ButterKnife.apply(etViewsWrappers, VISIBLE);
-                ButterKnife.apply(txtViewsValues, INVISIBLE);
+            case FUNCTIONALITY_PROFILE_EDIT: //режим редактирования
+                ButterKnife.apply(etViewsWrappers, VISIBLE); //показать EditText
+                ButterKnife.apply(txtViewsValues, INVISIBLE); //скрыть TextView
                 ButterKnife.apply(txtViewsLabels, INVISIBLE);
                 break;
             default:
@@ -116,6 +126,7 @@ public class ProfileFragment extends Fragment {
                 ButterKnife.apply(txtViewsLabels, VISIBLE);
                 break;
         }
+
     }
 
     /**
@@ -141,8 +152,8 @@ public class ProfileFragment extends Fragment {
     /**
      * вставка массива значений в поля форм
      */
-    private  void setFieldsData(List<? extends TextView> viewList, List<String> userFields){
-        int i=0;
+    private void setFieldsData(List<? extends TextView> viewList, List<String> userFields) {
+        int i = 0;
         for (TextView viewField : viewList) {
             viewField.setText(userFields.get(i));
             i++;
@@ -152,12 +163,12 @@ public class ProfileFragment extends Fragment {
     /**
      * Получение массива значений из полей форм
      */
-    private List<String> getFieldsData(List<? extends TextView> viewList){
+    private List<String> getFieldsData(List<? extends TextView> viewList) {
         List<String> userFields = new ArrayList<String>();
         for (TextView viewField : viewList) {
             userFields.add(viewField.getText().toString());
         }
-        return userFields ;
+        return userFields;
     }
 
 }

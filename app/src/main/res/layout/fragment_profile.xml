@@ -62,13 +62,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:visibility="gone">
+                >
 
                 <EditText
                     android:id="@+id/et_phone_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/fragment.profile.phone.label.mobile" />
+                    android:hint="@string/fragment.profile.phone.label.mobile"
+                    android:enabled="true"/>
 
             </android.support.design.widget.TextInputLayout>
 
